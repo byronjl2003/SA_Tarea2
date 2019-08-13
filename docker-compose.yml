@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  esb:
+    build: ./ESB
+    image: esbv1 
+    #image: gcr.io/analisis2/product-api:v1
+    ports:
+      - 5001:5001
+    volumes:
+      - /home/bj/repos/SA_Tarea2/ESB:/home/node/app:Z
+    #links:
+    #  - cliente
+    #  - piloto
+
+  cliente:
+    build: ./Cliente
+    image: clientev1 
+    #image: gcr.io/analisis2/product-api:v1
+    ports:
+      - 5000:5000
+    links:
+      - esb
+    volumes:
+      - /home/bj/repos/SA_Tarea2/Cliente:/home/node/app:Z
+
+  piloto:
+    build: ./Piloto
+    image: pilotov1
+    #image: gcr.io/analisis2/product-web:v1
+    ports:
+      - 5002:5002
+    links:
+      - esb
+    volumes:
+      - /home/bj/repos/SA_Tarea2/Piloto:/home/node/app:Z
+
+  ubicacion:
+    build: ./Ubicacion
+    image: ubicacionv1
+    #image: gcr.io/analisis2/product-web:v1
+    ports:
+      - 5003:5003
+    links:
+      - esb
+    volumes:
+      - /home/bj/repos/SA_Tarea2/Ubicacion:/home/node/app:Z

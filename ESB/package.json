@@ -1,0 +1,27 @@
+{
+  "name": "esb",
+  "version": "1.0.0",
+  "description": "ESB de la tarea",
+  "main": "node server.js",
+  "scripts": {
+    "start":"node server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byronjl2003/SA_Tarea2.git"
+  },
+  "keywords": [
+    "esb",
+    "microservicios"
+  ],
+  "author": "byro lopez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/byronjl2003/SA_Tarea2/issues"
+  },
+  "homepage": "https://github.com/byronjl2003/SA_Tarea2#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
