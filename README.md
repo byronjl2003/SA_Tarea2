@@ -61,7 +61,10 @@
 ---
 ## Diagramas
 Solicitud de uber: La solicitud de uber sigue el siguiente flujo.
-1. El ESB recibe una solicitud 
+1. El ESB recibe una solicitud de viaje.
+2. El ESB internamente accede al recurso de pilotos y obtiene un piloto disponible y le asigna a dicho piloto el id del cliente.
+3. El ESB ya sabiendo el id del piloto a asgnar accede al recurso de los clientes y procede a asignar al cliente el piloto.
+ 
 
 ![diagrama][logo]
 
