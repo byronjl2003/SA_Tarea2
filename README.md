@@ -60,7 +60,9 @@
 ---
 ---
 ## Diagramas
-Solicitud de uber: 
+Solicitud de uber: La solicitud de uber sigue el siguiente flujo.
+1. El ESB recibe una solicitud 
+
 ![diagrama][logo]
 
 [logo]: https://github.com/byronjl2003/SA_Tarea2/blob/master/diagramas/solicitud-servicio.png?raw=true "solicitud de uber"
