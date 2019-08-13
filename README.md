@@ -1,7 +1,71 @@
 # Documentacion Tarea 2
-## Softaware avanzado
-### USAC
+# Softaware avanzado - USAC
+## Componentes de la solucion
+## 1.ESB
+<p>Endpoints</p>
+<dl>
+  <dt>
+  <h5>- solicitar viaje</h6>
+  </dt>
+  <dd>
+  Endpoint disponible en el ESB para solicitar servicio de Uber para un determinado cliente.
+  <p>Parametros:</p>
+  <table>
+  <tr>
+  <th>nombre</th>
+  <th>descripcion</th>
+  </tr>
+  <tr>
+  <td>id</td>
+  <td>
+  id del cliente que solicita el viaje
+  </td>
+  </tr>
+  </table>
+  <p>Ejemplo de url:</p>
+  <dd>http://localhost:5001/solicitar-viaje?id=1</dd>
+  </dd>
 
+  <dt>
+  <h5>- rastrear</h6>
+  </dt>
+  <dd>
+  Endpoint disponible en el ESB para rastrear el piloto asociado a un cliente.
+  <p>Parametros:</p>
+  <table>
+  <tr>
+  <th>nombre</th>
+  <th>descripcion</th>
+  </tr>
+  <tr>
+  <td>id</td>
+  <td>
+  id del cliente que tiene asociado el piloto que se desea rastrear
+  </td>
+  </tr>
+  </table>
+  <p>Ejemplo de url:</p>
+  <dd>http://localhost:5001/rastrear?id=1</dd>
+  </dd>
+</dl>
+ 
+
+---
+## 2.Servicios
+### 1.Cliente
+---
+### 2.Piloto
+---
+### 3.Ubicacion
+---
+---
+## Diagramas
+Solicitud de uber: 
+![diagrama][logo]
+
+[logo]: https://github.com/byronjl2003/SA_Tarea2/blob/master/diagramas/solicitud-servicio.png?raw=true "solicitud de uber"
+---
+## Arbol del proyecto
 ```
 SA_Tarea2
 ├─ .gitignore
