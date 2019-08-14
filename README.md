@@ -1,5 +1,29 @@
 # Documentacion Tarea 2
 # Softaware avanzado - USAC
+## Instrucciones para su ejecucion
+Para la ejecucion se necesita tener instalado en la maquina host las siguientes herramientas de software.
+1. Docker
+2. Docker-compose.
+
+Instrucciones:
+- colocarse en la raiz de la carpeta SA_TAREA2.
+- ejcutar el siguiente comando.
+```docker
+$ docker-compose build
+$ docker-compose up
+```
+- para hacer el request de servicio de un uber hacer una peticion get a la siguiente url:
+```html
+GET http://localhost:5001/solicitar-viaje?id=x
+```
+    [donde la x representa el id de un cliente. Los ids disponibles dentro de la aplicacion estan en el rango de [0-2].]
+
+- para hacer el request de la ubicacion de un piloto hacer una peticion get a la siguiente url:
+```html
+GET http://localhost:5001/rastreat?id=x
+```
+    [donde la x representa el id de un cliente. Los ids disponibles dentro de la aplicacion estan en el rango de [0-2].]
+
 ## Componentes de la solucion
 ## 1.ESB
 <p>Endpoints</p>
@@ -53,10 +77,114 @@
 ---
 ## 2.Servicios
 ### 1.Cliente
+<p>Endpoints</p>
+<dl>
+  <dt>
+  <h5>- asignar pioto</h6>
+  </dt>
+  <dd>
+  Endpoint para asignrle a cierto cliente un piloto.
+  <p>Parametros:</p>
+  <table>
+  <tr>
+  <th>nombre</th>
+  <th>descripcion</th>
+  </tr>
+  <tr>
+  <td>id</td>
+  <td>
+  id del cliente que solicita el viaje
+  </td>
+  </tr>
+  <tr>
+  <td>idpiloto</td>
+  <td>
+  id del piloto del que se quiere la ubicacion
+  </td>
+  </tr>
+  </table>
+  <p>Ejemplo de url:</p>
+  <dd>http://localhost:5000/asignar-piloto?id=1&idpiloto=1</dd>
+  </dd>
+
+</dl>
 ---
 ### 2.Piloto
+<p>Endpoints</p>
+<dl>
+  <dt>
+  <h5>- obtener piloto disponible</h6>
+  </dt>
+  <dd>
+  Endpoint para obtener un piloto disponible.
+  <p>Parametros:</p>
+  <table>
+  <tr>
+  <th>nombre</th>
+  <th>descripcion</th>
+  </tr>
+  <tr>
+  <td>id</td>
+  <td>
+  id del cliente que solicita el viaje
+  </td>
+  </tr>
+  </table>
+  <p>Ejemplo de url:</p>
+  <dd>http://localhost:5002/?id=1</dd>
+  </dd>
+
+</dl>
+<dl>
+  <dt>
+  <h5>- rastrear </h6>
+  </dt>
+  <dd>
+  Endpoint para obtener ubicacion de un piloto.
+  <p>Parametros:</p>
+  <table>
+  <tr>
+  <th>nombre</th>
+  <th>descripcion</th>
+  </tr>
+  <tr>
+  <td>idcliente</td>
+  <td>
+  id del cliente que solicita la ubicacion del piloto
+  </td>
+  </tr>
+  </table>
+  <p>Ejemplo de url:</p>
+  <dd>http://localhost:5002/rastrear?idcliente=1</dd>
+  </dd>
+
+</dl>
 ---
 ### 3.Ubicacion
+<dl>
+  <dt>
+  <h5>- obtener ubicacion </h6>
+  </dt>
+  <dd>
+  Endpoint para obtener ubicacion de un piloto.
+  <p>Parametros:</p>
+  <table>
+  <tr>
+  <th>nombre</th>
+  <th>descripcion</th>
+  </tr>
+  <tr>
+  <td>idpiloto</td>
+  <td>
+  id del piloto del que se quiere ubicacion
+  </td>
+  </tr>
+  </table>
+  <p>Ejemplo de url:</p>
+  <dd>http://localhost:5003/?idpiloto=1</dd>
+  </dd>
+
+</dl>
 ---
 ---
 ## Diagramas
