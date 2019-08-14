@@ -1,5 +1,7 @@
 # Documentacion Tarea 2
 # Softaware avanzado - USAC
+### Byron Jose Lopez Herrera
+### 201222626
 ## Instrucciones para su ejecucion
 Para la ejecucion se necesita tener instalado en la maquina host las siguientes herramientas de software.
 1. Docker
