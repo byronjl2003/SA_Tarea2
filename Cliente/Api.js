@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { clientes } = require("./data");
-
+module.exports = (router = new Router()) => {
   /*
     endpoint para solicitar viaje por parte de un cliente
     parametros a recibir:

@@ -47,6 +47,8 @@ module.exports = (router = new Router()) => {
  */
   router.get("/rastrear", async (req, res) => {
     let idcliente = req.param("idcliente");
+    console.log(idcliente);
+    console.log(pilotos);
     let response;
     let i = 0;
     let piloto;

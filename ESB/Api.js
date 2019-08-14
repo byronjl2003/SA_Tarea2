@@ -28,11 +28,12 @@ module.exports = (router = new Router()) => {
   router.get("/solicitar-viaje", async (req, res) => {
     console.log("ENTRE A SOLICITAR-VIAJE");
     let idcliente = req.param("id");
+    let response;
     console.log("id del cliente solicitante " + idcliente);
     //1.
-    
+
     https
-      .get("http://piloto:5002/?id="+idcliente, resp => {
+      .get("http://piloto:5002/?id=" + idcliente, resp => {
         let data = "";
 
         resp.on("data", chunk => {
@@ -43,32 +44,37 @@ module.exports = (router = new Router()) => {
           console.log(data);
           let resppiloto = JSON.parse(data);
           //2.
-          https
-            .get(
-              "http://cliente:5000/asignar-piloto?id=" +
-                idcliente +
-                "&idpiloto=" +
-                resppiloto.id,
-              resp => {
-                let data = "";
-                resp.on("data", chunk => {
-                  data += chunk;
-                });
-                resp.on("end", () => {
-                  console.log(data);
-                  
-                });
-              }
-            )
-            .on("error", err => {
-              console.log("Error: " + err.message);
-            });
-          //termina 2
-          let response = {
-            mess:"tu piloto asignado es "+resppiloto.nombre,
-            idpiloto: resppiloto.id,
-            idcliente: idcliente
+          if (resppiloto.id == -1) {
+            response = {
+              mess: "ocurrio un error"
+            };
+          } else {
+            https
+              .get(
+                "http://cliente:5000/asignar-piloto?id=" +
+                  idcliente +
+                  "&idpiloto=" +
+                  resppiloto.id,
+                resp => {
+                  let data = "";
+                  resp.on("data", chunk => {
+                    data += chunk;
+                  });
+                  resp.on("end", () => {
+                    console.log(data);
+                  });
+                }
+              )
+              .on("error", err => {
+                console.log("Error: " + err.message);
+              });
+            response = {
+              mess: "tu piloto asignado es " + resppiloto.nombre,
+              idpiloto: resppiloto.id,
+              idcliente: idcliente
+            };
           }
+
           res.end(JSON.stringify(response));
         });
       })
@@ -90,53 +96,53 @@ module.exports = (router = new Router()) => {
     2.Obtiene la ubicacion del piloto del servicio de ubicacion
 
   */
-  router.get("/rastrear",async(req,res)=> {
-    console.log("ENTRE A RASTREAR");
-    let idcliente = req.param("id");
-    console.log("id del cliente " + idcliente);
-    //1.
-    let response;
-    https
-      .get("http://piloto:5002/rastrear?idcliente="+idcliente, resp => {
-        let data = "";
-        resp.on("data", chunk => {
-          data += chunk;
-        });
-
-        resp.on("end", () => {
-          console.log(data);
-          let resppiloto = JSON.parse(data);
-          //2.
-          https
-            .get(
-              "http://ubicacion:5003/?idpiloto="+resppiloto.id,
-              resp => {
-                let data = "";
-                resp.on("data", chunk => {
-                  data += chunk;
-                });
-                resp.on("end", () => {
-                  console.log(data);
-                  response = JSON.parse(data);
-                  res.end(JSON.stringify(response));
-                  
-                });
-              }
-            )
-            .on("error", err => {
-              console.log("Error: " + err.message);
-            });
-          //termina 2
-          
-          
-        });
-      })
-      .on("error", err => {
-        console.log("Error: " + err.message);
-        rsponse = { error: err.message };
-        res.end(JSON.stringify(response));
+ router.get("/rastrear",async(req,res)=> {
+  console.log("ENTRE A RASTREAR");
+  let idcliente = req.param("id");
+  console.log("id del cliente " + idcliente);
+  //1.
+  let response;
+  https
+    .get("http://piloto:5002/rastrear?idcliente="+idcliente, resp => {
+      let data = "";
+      resp.on("data", chunk => {
+        data += chunk;
       });
 
-  });
-  return router;
+      resp.on("end", () => {
+        console.log(data);
+        let resppiloto = JSON.parse(data);
+        //2.
+        https
+          .get(
+            "http://ubicacion:5003/?idpiloto="+resppiloto.id,
+            resp => {
+              let data = "";
+              resp.on("data", chunk => {
+                data += chunk;
+              });
+              resp.on("end", () => {
+                console.log(data);
+                response = JSON.parse(data);
+                res.end(JSON.stringify(response));
+                
+              });
+            }
+          )
+          .on("error", err => {
+            console.log("Error: " + err.message);
+          });
+        //termina 2
+        
+        
+      });
+    })
+    .on("error", err => {
+      console.log("Error: " + err.message);
+      rsponse = { error: err.message };
+      res.end(JSON.stringify(response));
+    });
+
+});
+return router;
 };
