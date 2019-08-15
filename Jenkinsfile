@@ -8,6 +8,12 @@ pipeline{
             }
 
 	}
+	    stage('Sonarqube'){
+		    steps{
+			    sh 'sonar-scanner'
+		    }
+	    }
+	    
 
     }
     post{
