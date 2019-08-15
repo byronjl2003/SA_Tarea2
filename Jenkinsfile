@@ -8,6 +8,11 @@ pipeline{
             }
 
 	}
+	    stage('Docker'){
+		    steps{
+			    sh 'docker -v'
+		    }
+	    }
 	    stage('Sonarqube'){
 		    steps{
 			    sh 'sonar-scanner'
