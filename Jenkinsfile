@@ -1,7 +1,7 @@
 pipeline{
     agent any
 	tools {
-        sonar 'sonar-in-jenkins' 
+        hudson.plugins.sonar.SonarRunnerInstallation 'sonar-in-jenkins' 
     }
     stages{
 		stage('Imprimir variables'){
