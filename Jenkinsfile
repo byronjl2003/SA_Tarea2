@@ -18,7 +18,7 @@ pipeline{
 			}
 			*/
 			steps {
-                withSonarQubeEnv('My SonarQube Server') {
+                withSonarQubeEnv('sonar-in-jenkins') {
                     // Optionally use a Maven environment you've configured already
                     sh 'sonar-scanner'
                 }
