@@ -1,8 +1,9 @@
 pipeline{
     agent any
-	tools {
-        hudson.plugins.sonar.SonarRunnerInstallation 'sonar-in-jenkins' 
+	/*tools {
+        hudson.plugins.sonar.SonarRunnerInstallation 
     }
+	*/
     stages{
 		stage('Imprimir variables'){
 				steps{
@@ -12,12 +13,16 @@ pipeline{
 
 		}
 		stage('Sonar'){
-			environment{
+			/*environment{
 				scannerHome = tool 'SonarScanner 4.0'
 			}
-			steps{
-				sh 'echo $scannerHome'
-			}
+			*/
+			steps {
+                withSonarQubeEnv('My SonarQube Server') {
+                    // Optionally use a Maven environment you've configured already
+                    sh 'sonar-scanner'
+                }
+            }
 		}
 
     }
