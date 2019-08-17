@@ -9,7 +9,7 @@ pipeline{
 
 		}
 		stage('Sonar'){
-			enviroment{
+			environment{
 				scannerHome = 'HOLA-Scanner'
 			}
 			steps{
