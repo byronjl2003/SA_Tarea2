@@ -8,6 +8,14 @@ pipeline{
             }
 
 	}
+	    stage('Sonar'){
+		    enviroment{
+		    	scannerHome = 'HOLA-Scanner'
+		    }
+		    steps{
+		    	sh 'echo $scannerHome'
+		    }
+	    }
 
     }
     post{
