@@ -1,5 +1,8 @@
 pipeline{
     agent any
+	tools {
+        sonar 'sonar-in-jenkins' 
+    }
     stages{
 		stage('Imprimir variables'){
 				steps{
@@ -10,7 +13,7 @@ pipeline{
 		}
 		stage('Sonar'){
 			environment{
-				scannerHome = 'HOLA-Scanner'
+				scannerHome = tool 'SonarScanner 4.0'
 			}
 			steps{
 				sh 'echo $scannerHome'
