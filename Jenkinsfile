@@ -20,7 +20,7 @@ pipeline{
 				sh 'echo "jajajajajajx1000"'
 				sh 'echo $scannerHome'
 				withSonarQubeEnv('sonarqube') {
-            		sh "${scannerHome}/bin/sonar-scanner"
+            		sh "${scannerHome}/bin/sonar-scanner -X"
         		}		
 			}
 }
