@@ -1,5 +1,5 @@
 # Documentacion Tarea 2
-# Softaware avanzado - USAC------------------kakaka
+# Softaware avanzado - USAC------------------
 ### Byron Jose Lopez Herrera
 ### 201222626
 ### REPO: https://github.com/byronjl2003/SA_Tarea2
