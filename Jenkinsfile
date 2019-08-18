@@ -19,6 +19,9 @@ pipeline{
 			steps {
 				sh 'echo "jajajajajaj"'
 				sh 'echo $scannerHome'
+				withSonarQubeEnv('sonarqube') {
+            		sh "${scannerHome}/bin/sonar-scanner"
+        		}		
 			}
 }
 
