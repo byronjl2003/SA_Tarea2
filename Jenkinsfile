@@ -17,7 +17,7 @@ pipeline{
 				scannerHome = tool 'SonarQubeScanner'
 			}
 			steps {
-				sh 'echo "jajajajajaj"'
+				sh 'echo "jajajajajajx1000"'
 				sh 'echo $scannerHome'
 				withSonarQubeEnv('sonarqube') {
             		sh "${scannerHome}/bin/sonar-scanner"
