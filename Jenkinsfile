@@ -18,6 +18,7 @@ pipeline{
 			}
 			steps {
 				sh 'echo "jajajajajaj"'
+				sh 'echo $scannerHome'
 			}
 }
 
