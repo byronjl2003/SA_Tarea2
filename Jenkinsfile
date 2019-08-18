@@ -6,24 +6,25 @@ pipeline{
 	*/
     stages{
 		stage('Imprimir variables'){
-				steps{
-					sh 'echo "HOLA"'
-					sh 'echo "QUE TAL"'
-				}
+			steps{
+				sh 'echo "HOLA"'
+				sh 'echo "QUE TAL"'
+			}
 
 		}
-		stage('Sonar'){
-			/*environment{
-				scannerHome = tool 'SonarScanner 4.0'
+		stage('Sonarqube') {
+			environment {
+				scannerHome = tool 'SonarQubeScanner'
 			}
-			*/
 			steps {
-                withSonarQubeEnv('sonar-in-jenkins') {
-                    // Optionally use a Maven environment you've configured already
-                    sh 'sonar-scanner'
-                }
-            }
-		}
+				withSonarQubeEnv('sonarqube') {
+					sh "${scannerHome}/bin/sonar-scanner"
+				}
+				timeout(time: 10, unit: 'MINUTES') {
+					waitForQualityGate abortPipeline: true
+				}
+			}
+}
 
     }
     post{
