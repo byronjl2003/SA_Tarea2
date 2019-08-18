@@ -20,7 +20,10 @@ pipeline{
 				sh 'echo "jajajajajajx777"'
 				sh 'echo $scannerHome'
 				withSonarQubeEnv('sonarqube') {
-            		sh "${scannerHome}/bin/sonar-scanner -X"
+            		sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ayd2 \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=http://35.184.187.153 \
+  -Dsonar.login=843506c8d44155471da1d9a524475a456b8ebb16"
         		}		
 			}
 }
