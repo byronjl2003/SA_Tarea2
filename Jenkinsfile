@@ -25,7 +25,7 @@ pipeline{
   -Dsonar.host.url=http://35.184.187.153 \
   -Dsonar.login=843506c8d44155471da1d9a524475a456b8ebb16"
         		}
-				timeout(time: 10, unit: 'MINUTES') {
+				timeout(time: 1, unit: 'MINUTES') {
             		waitForQualityGate abortPipeline: true
         		}		
 			}
