@@ -17,7 +17,7 @@ pipeline{
 				scannerHome = tool 'SonarQubeScanner'
 			}
 			steps {
-				sh 'echo "con gate de coverage"'
+				sh 'echo "con gate de coverage y arrojaria error???"'
 				sh 'echo $scannerHome'
 				withSonarQubeEnv('sonarqube') {
             		sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ayd2 \
