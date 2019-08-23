@@ -1,7 +1,7 @@
-# Documentacion Tarea 2-----------
-# Softaware avanzado - USAC------------------
+# Documentacion Tarea 2
+# Softaware avanzado - USAC
 ### Byron Jose Lopez Herrera
-### 201222626-----
+### 201222626
 ### REPO: https://github.com/byronjl2003/SA_Tarea2
 ## Instrucciones para su ejecucion
 Para la ejecucion se necesita tener instalado en la maquina host las siguientes herramientas de software.
