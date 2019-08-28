@@ -14,8 +14,13 @@ module.exports = (router = new Router()) => {
   * formato respuesta: {idpiloto:777,Nombre:"..."}
 
  */
-
-  router.get("/saludar",(req,res)=> res.send('HOLA'))
+  router.get("/info",(req,res)=>{
+    console.log("obteniendo piloto info");
+    let response = pilotos[0];
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(response));
+  })
+  router.get("/saludar",(req,res)=> {console.log("HOLA");res.send('HOLA');})
   router.get("/", async (req, res) => {
     let idcliente = req.param("id");
     let response;

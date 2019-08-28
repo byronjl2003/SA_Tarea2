@@ -9,6 +9,12 @@ module.exports = (router = new Router()) => {
     formato respuesta: {idpiloto:777,Nombre:"..."}
 
  */
+  router.get("/info",(req,res)=>{
+    console.log("obteniendo cliente info");
+    let response = clientes[0];
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(response));
+  })
   router.get("/asignar-piloto", async (req, res) => {
     let idcliente = req.param("id");
     let idpiloto = req.param("idpiloto");
