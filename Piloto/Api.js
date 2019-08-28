@@ -14,6 +14,8 @@ module.exports = (router = new Router()) => {
   * formato respuesta: {idpiloto:777,Nombre:"..."}
 
  */
+
+  router.get("/saludar",(req,res)=> res.send('HOLA'))
   router.get("/", async (req, res) => {
     let idcliente = req.param("id");
     let response;
