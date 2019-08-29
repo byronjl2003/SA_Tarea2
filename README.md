@@ -3,6 +3,7 @@
 ### Byron Jose Lopez Herrera
 ### 201222626-----
 ### REPO: https://github.com/byronjl2003/SA_Tarea2
+# link del video https://youtu.be/tOM0Yf14T2g
 ## Instrucciones para su ejecucion
 Para la ejecucion se necesita tener instalado en la maquina host las siguientes herramientas de software.
 1. Java ->oracle jdk 1.8 o superior
