@@ -1,0 +1,73 @@
+<definitions name="init"
+    targetNamespace="http://j2ee.netbeans.org/wsdl/Test/src/init"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:rest="http://schemas.sun.com/jbi/wsdl-extensions/rest/"
+    xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:tns="http://j2ee.netbeans.org/wsdl/Test/src/init">
+    <types>
+        <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/Test/src/init">
+            <xsd:import namespace="http://xml.netbeans.org/schema/root" schemaLocation="root.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="entrarRequest">
+        <part name="part1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="xsd:anyType"/>
+    </message>
+    <message name="entrarResponse">
+        <part name="part1" xmlns:ns="http://xml.netbeans.org/schema/root" element="ns:root"/>
+    </message>
+    <portType name="RestInboundPortType">
+        <operation name="entrar">
+            <input name="entrarInput" xmlns:tns="http://j2ee.netbeans.org/wsdl/Test/src/init" message="tns:entrarRequest"/>
+            <output name="entrarOutput" xmlns:tns="http://j2ee.netbeans.org/wsdl/Test/src/init" message="tns:entrarResponse"/>
+        </operation>
+    </portType>
+    <binding name="RestInboundBinding" type="tns:RestInboundPortType">
+        <rest:binding/>
+        <operation name="entrar">
+            <rest:operation>
+&lt;![CDATA[
+# optional, name of HTTP listener to bind to, defaults to "default-listener"
+http-listener-name=default-listener
+
+# required, path to this resource
+path=/entrar
+
+# optional, HTTP verb to access the resource, defaults to GET
+method=GET
+
+# optional, acceptable MIME types for request payload, defaults to "application/json", "application/xml"
+consume-types=[ "application/json" ]
+
+# optional, all possible MIME types of response payload, defaults to "application/json", "application/xml"
+produce-types=[ "application/json" ]
+
+forward-as-attachment=false
+request-root-removed=false
+response-root-required=true
+response-root-name=root
+
+
+]]&gt;</rest:operation>
+            <input name="entrarInput"/>
+            <output name="entrarOutput"/>
+        </operation>
+    </binding>
+    <service name="RestInboundService">
+        <port name="RestInboundWSDL_InboundPort" binding="tns:RestInboundBinding">
+            <rest:address/>
+        </port>
+    </service>
+    <plnk:partnerLinkType name="RestInboundWSDL">
+        <!-- A partner link type is automatically generated when a new port type
+        is added. Partner link types are used by BPEL processes.
+
+        In a BPEL process, a partner link represents the interaction between
+        the BPEL process and a partner service. Each partner link is associated
+        with a partner link type.
+        
+        A partner link type characterizes the conversational relationship
+        between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="RestInboundPortTypeRole" portType="tns:RestInboundPortType"/>
+    </plnk:partnerLinkType>
+</definitions>
