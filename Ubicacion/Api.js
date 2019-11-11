@@ -22,15 +22,20 @@ module.exports = (router = new Router()) => {
     res.end(JSON.stringify(ubicaciones[idpiloto]));
   });
   router.get("/python", async (req, res) => {
-    const { spawn } = require('child_process');
-    const pyProg = spawn('python', [__dirname+"/hellow.py"]);
-
-    pyProg.stdout.on('data', function(data) {
-
-        console.log(data.toString());
-        //res.write(data);
-        res.end(JSON.stringify({mensaje:data.toString()}));
+    const { exec } = require('child_process');
+    exec("python "+__dirname+"/hellow.py", (err, stdout, stderr) => {
+      if (err) {
+        //some err occurred
+        console.error(err);
+        res.end(JSON.stringify(err));
+        
+      } else {
+        // the *entire* stdout and stderr (buffered)
+        res.end(JSON.stringify({mess:"okkkk"}));
+        
+      }
     });
+
     
   });
   return router;
