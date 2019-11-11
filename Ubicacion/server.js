@@ -5,5 +5,5 @@ const api = require('./Api');
 app.use(api());
 
 app.listen(5003, () => {
-  console.log(`Server listening on port 80`);
+  console.log(`Server listening on port 5003`);
 });

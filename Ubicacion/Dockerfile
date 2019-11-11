@@ -5,6 +5,7 @@ COPY package*.json ./
 USER node
 RUN npm install
 COPY --chown=node:node . .
+ENV HOST 77.77.77
 EXPOSE 5003
 
 CMD [ "npm", "start" ]
